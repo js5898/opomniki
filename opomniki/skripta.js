@@ -12,8 +12,28 @@ window.addEventListener('load', function() {
 		// . je za classe, # je za idje --> ID ima en gradnik, class jih lahko ima več
 		document.querySelector(".pokrivalo").style.visibility="hidden";
 	}
+		//Ne sme biti zgoraj - nad funkcijo izvedi prijavo!
+	document.querySelector("#prijavniGumb").addEventListener('click', izvediPrijavo);
+	
+	
+	
+	var dodajOpomnik = function(event){
+		var naziv_op =  document.querySelector("#naziv_opomnika").value;
+		var cas_op = document.querySelector("#cas_opomnika").value;
 		
-		document.querySelector("#prijavniGumb").addEventListener('click', izvediPrijavo);
+		//Praznjenje polja
+		document.querySelector("#naziv_opomnika").value = "";
+		document.querySelector("#cas_opomnika").value = "";
+		document.querySelector("#opomniki").innerHTML += "\
+		<div class='opomnik'> \
+            <div class='naziv_opomnika'>" + naziv_op + "</div> \
+            <div class='cas_opomnika'> Opomnik čez <span>" + cas_op + "</span> sekund.</div> \
+		</div>";
+		
+	}
+	document.querySelector("#dodajGumb").addEventListener("click", dodajOpomnik);
+	
+	
 	//Posodobi opomnike
 	var posodobiOpomnike = function() {
 		var opomniki = document.querySelectorAll(".opomnik");
